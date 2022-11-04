@@ -17,7 +17,7 @@ public record Department(int deptno, String dname, String loc) {
 	public static void main(String[] args) {
 		List<Department> departments = null;
 		String sqlQuery = "SELECT * FROM DEPT";
-		try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "utsab",
+		try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "utsab",
 				"utsab");
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery(sqlQuery);) {
