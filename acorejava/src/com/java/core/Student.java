@@ -2,6 +2,7 @@ package com.java.core;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class Student {
 
@@ -10,7 +11,7 @@ public class Student {
 	private LocalDate dateOfBirth;
 
 	public Student(String name, int year, int month, int day) {
-		this.name = name;
+		this.name = Objects.requireNonNullElse(name, "Random");
 		this.dateOfBirth = LocalDate.of(year, month, day);
 		++id;
 	}
