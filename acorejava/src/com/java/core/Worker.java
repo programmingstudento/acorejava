@@ -31,8 +31,27 @@ public class Worker {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(Objects.hashCode(dateOfBirth), Objects.hashCode(name), salary);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Worker other = (Worker) obj;
+		return Objects.equals(dateOfBirth, other.dateOfBirth) && Objects.equals(name, other.name)
+				&& salary == other.salary;
+	}
+
+	@Override
 	public String toString() {
-		return String.format("Worker [name=%s, dateOfBirth=%s, salary=%s]", name, dateOfBirth, salary);
+		return String.format("%s [name=%s, dateOfBirth=%s, salary=%s]", getClass().getSimpleName(), name, dateOfBirth,
+				salary);
 	}
 
 }

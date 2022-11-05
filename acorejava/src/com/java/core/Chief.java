@@ -1,5 +1,7 @@
 package com.java.core;
 
+import java.util.Objects;
+
 public class Chief extends Worker {
 
 	private int bonus;
@@ -18,9 +20,25 @@ public class Chief extends Worker {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(super.hashCode(), Double.valueOf(bonus).hashCode());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chief other = (Chief) obj;
+		return bonus == other.bonus;
+	}
+
+	@Override
 	public String toString() {
-		return String.format("Chief [bonus=%s, salary=%s, name=%s, dateOfBirth=%s]", bonus, getSalary(), getName(),
-				getDateOfBirth());
+		return String.format("[bonus=%s, toString()=%s]", bonus, super.toString());
 	}
 
 }
