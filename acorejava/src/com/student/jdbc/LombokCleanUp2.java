@@ -15,7 +15,7 @@ public class LombokCleanUp2 {
 		Scanner scanner = new Scanner(System.in);
 
 		@Cleanup
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott", "tiger");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
 
 		@Cleanup
 		Statement statement = connection.createStatement();
