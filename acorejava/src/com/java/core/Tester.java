@@ -23,5 +23,6 @@ public class Tester {
 		System.out.println(one == two);
 		System.out.println(one.equals(two));
 		System.out.println(one.hashCode() + " " + two.hashCode());
+
 	}
 }
