@@ -10,17 +10,18 @@ import java.util.Scanner;
 
 public class AudienceMultipleInsert {
 
-	private static int INSERT_COUNT;
 	private static final String INSERT = "INSERT INTO AUDIENCE VALUES (?,?,?,?,?)";
 
 	public static void main(String[] args) {
+		int insertCount = Integer.MIN_VALUE;
 		try (Scanner scanner = new Scanner(System.in);
-				Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott",
+				Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott",
 						"tiger");
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT);) {
 
 			displayMessage("Enter the number of records to insert into AUDIENCE table : ");
-			List<Object[]> records = collectRecord(Integer.valueOf(scanner.nextLine()), scanner);
+			insertCount = Integer.valueOf(scanner.nextLine());
+			List<Object[]> records = collectRecord(insertCount, scanner);
 			setValues(preparedStatement, records);
 
 		} catch (SQLException e) {
@@ -28,17 +29,15 @@ public class AudienceMultipleInsert {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.printf("%d records inserted into AUDIENCE TABLE.", new Object[] { INSERT_COUNT });
+		System.out.printf("%d records inserted into AUDIENCE TABLE.", new Object[] { insertCount });
 	}
 
 	private static void setValues(PreparedStatement preparedStatement, List<Object[]> records) throws SQLException {
-		INSERT_COUNT = 0;
 		for (Object[] item : records) {
 			for (int index = 0; index < item.length; index++) {
 				preparedStatement.setObject(index + 1, item[index]);
 			}
 			preparedStatement.executeUpdate();
-			INSERT_COUNT++;
 		}
 	}
 
