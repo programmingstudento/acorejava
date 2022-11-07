@@ -14,7 +14,7 @@ public class PreparedStatementInsert {
 		int count = 0;
 
 		try (Scanner scanner = new Scanner(System.in);
-				Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott",
+				Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott",
 						"tiger");
 				PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);) {
 			System.out.println("Enter the number of records to insert ");
