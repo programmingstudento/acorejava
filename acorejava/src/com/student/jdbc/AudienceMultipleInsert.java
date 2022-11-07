@@ -14,26 +14,19 @@ public class AudienceMultipleInsert {
 	private static final String INSERT = "INSERT INTO AUDIENCE VALUES (?,?,?,?,?)";
 
 	public static void main(String[] args) {
-		try {
+		try (Scanner scanner = new Scanner(System.in);
+				Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott",
+						"tiger");
+				PreparedStatement preparedStatement = connection.prepareStatement(INSERT);) {
 
-			AudienceCreation.createTable();
+			displayMessage("Enter the number of records to insert into AUDIENCE table : ");
+			List<Object[]> records = collectRecord(Integer.valueOf(scanner.nextLine()), scanner);
+			setValues(preparedStatement, records);
 
-			try (Scanner scanner = new Scanner(System.in);
-					Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe",
-							"scott", "tiger");
-					PreparedStatement preparedStatement = connection.prepareStatement(INSERT);) {
-
-				displayMessage("Enter the number of records to insert into AUDIENCE table : ");
-				List<Object[]> records = collectRecord(Integer.valueOf(scanner.nextLine()), scanner);
-				setValues(preparedStatement, records);
-
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally { // Closing AudienceCreation resources.
-			AudienceCreation.close();
 		}
 		System.out.printf("%d records inserted into AUDIENCE TABLE.", new Object[] { INSERT_COUNT });
 	}
