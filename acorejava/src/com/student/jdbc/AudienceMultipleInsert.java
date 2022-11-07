@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class AudienceMultipleInsert {
 
-	private static final String INSERT = "INSERT INTO AUDIENCE VALUES (?,?,?,?,?)";
+	private static final String INSERT = "INSERT INTO AUDIENCE(ANAME,AGE,GENDER,RELIGION) VALUES (?,?,?,?)";
 
 	public static void main(String[] args) {
 		int insertCount = Integer.MIN_VALUE;
@@ -23,13 +23,13 @@ public class AudienceMultipleInsert {
 			insertCount = Integer.valueOf(scanner.nextLine());
 			List<Object[]> records = collectRecord(insertCount, scanner);
 			setValues(preparedStatement, records);
+			System.out.printf("%d records inserted into AUDIENCE TABLE.", new Object[] { insertCount });
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.printf("%d records inserted into AUDIENCE TABLE.", new Object[] { insertCount });
 	}
 
 	private static void setValues(PreparedStatement preparedStatement, List<Object[]> records) throws SQLException {
@@ -46,17 +46,15 @@ public class AudienceMultipleInsert {
 		Object[] values = null;
 		List<Object[]> records = new ArrayList<>();
 		while (number > 0) {
-			values = new Object[5];
-			displayMessage("Enter id for audience : ");
-			values[0] = Integer.parseInt(scanner.nextLine());
+			values = new Object[4];
 			displayMessage("Enter name for audience : ");
-			values[1] = scanner.nextLine();
+			values[0] = scanner.nextLine();
 			displayMessage("Enter age for audience : ");
-			values[2] = Integer.valueOf(scanner.nextLine());
+			values[1] = Integer.valueOf(scanner.nextLine());
 			displayMessage("Enter gender for audience : ");
-			values[3] = scanner.nextLine();
+			values[2] = scanner.nextLine();
 			displayMessage("Enter religion for audience : ");
-			values[4] = scanner.nextLine();
+			values[3] = scanner.nextLine();
 			records.add(values);
 			number--;
 		}
