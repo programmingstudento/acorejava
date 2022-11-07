@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.stream.IntStream;
 
 public class ProblemOne {
 
@@ -26,9 +25,20 @@ public class ProblemOne {
 		}
 	}
 
-	private static int evenSum(BufferedReader bufferedReader) {
-		IntStream numbers = bufferedReader.lines().skip(1).mapToInt(Integer::valueOf);
-		return numbers.filter(num -> num % 2 == 0).sum();
+	private static int evenSum(BufferedReader bufferedReader) throws IOException {
+		int total = 0, index = 0, size = Integer.valueOf(bufferedReader.readLine());
+		int[] numbers = new int[size];
+		String data = null;
+
+		while ((data = bufferedReader.readLine()) != null) {
+			numbers[index++] = Integer.valueOf(data);
+		}
+		for (int number : numbers) {
+			if (number % 2 == 0) {
+				total += number;
+			}
+		}
+		return total;
 	}
 
 }
