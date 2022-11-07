@@ -14,6 +14,9 @@ public class TestOne {
 	}
 
 	private static Couple<Integer> maxMinMark(int[] marks) {
+		if (marks == null || marks.length == 0) {
+			return null;
+		}
 		var mark = Arrays.copyOf(marks, marks.length);
 		Arrays.sort(mark);
 		return new Couple<Integer>(mark[marks.length - 1], mark[0]);
