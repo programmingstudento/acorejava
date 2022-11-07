@@ -13,7 +13,7 @@ public class AudienceCreation {
 
 	public static void main(String[] args) {
 
-		try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott",
+		try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott",
 				"tiger"); Statement statement = connection.createStatement();) {
 
 			statement.executeUpdate(CREATE_AUDIENCE);

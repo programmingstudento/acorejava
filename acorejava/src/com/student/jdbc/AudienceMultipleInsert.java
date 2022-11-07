@@ -15,7 +15,7 @@ public class AudienceMultipleInsert {
 
 	public static void main(String[] args) {
 		try (Scanner scanner = new Scanner(System.in);
-				Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott",
+				Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott",
 						"tiger");
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT);) {
 
