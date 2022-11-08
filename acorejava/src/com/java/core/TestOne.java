@@ -11,6 +11,10 @@ public class TestOne {
 		var data = maxMinMark(marks);
 		System.out.println("Max is " + data.getOne());
 		System.out.println("Min is " + data.getTwo());
+
+		var maxMin = ArrayAlgorithm
+				.findMinMax(new String[] { "java", "c#", "haskell", "ruby", "python", "javascript" });
+		System.out.println(maxMin.getOne() + " " + maxMin.getTwo());
 	}
 
 	private static Couple<Integer> maxMinMark(int[] marks) {

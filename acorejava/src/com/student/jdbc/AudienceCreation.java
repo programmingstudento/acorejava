@@ -13,16 +13,22 @@ public class AudienceCreation {
 			"NOT NULL");
 
 	public static void main(String[] args) {
-
+		int count1 = -1, count2 = -1;
 		try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott",
 				"tiger"); Statement statement = connection.createStatement();) {
 
-			statement.executeUpdate(SEQUENCE);
-			statement.executeUpdate(CREATE_AUDIENCE);
+			count1 = statement.executeUpdate(SEQUENCE);
+			count2 = statement.executeUpdate(CREATE_AUDIENCE);
 			System.out.println("Audience Seq created.");
 			System.out.println("Audience table created.");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		if (count1 == -1) {
+			System.out.println("Sequence not created.");
+		}
+		if (count2 == -1) {
+			System.out.println("Table not created");
 		}
 	}
 }
