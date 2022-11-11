@@ -33,6 +33,7 @@ public class Problem {
 		System.out.println(foods);
 
 		var items = Arrays.asList("read ", " run ", " dance", " eat ", " swim");
+		
 		for (var item : items) {
 			System.out.println(item + " " + item.length());
 		}
