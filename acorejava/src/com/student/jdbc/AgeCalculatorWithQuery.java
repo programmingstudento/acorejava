@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class AgeCalculatorWithQuery {
-	private static final String SQL = "SELECT ROUND(MONTHS_BETWEEN(SYSDATE,DOB)/12) AS AGE FROM EMPLOYEE WHERE ID = ?";
+	private static final String SQL = "SELECT FLOOR(MONTHS_BETWEEN(SYSDATE,DOB)/12) AS AGE FROM EMPLOYEE WHERE ID = ?";
 
 	public static void main(String[] args) {
 		try (Scanner scanner = new Scanner(System.in);
