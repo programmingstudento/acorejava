@@ -30,8 +30,9 @@ public class SelectDate {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
 	}
 
 }
