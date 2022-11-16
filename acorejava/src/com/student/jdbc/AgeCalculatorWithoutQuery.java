@@ -24,6 +24,7 @@ public class AgeCalculatorWithoutQuery {
 
 			try (ResultSet resultSet = preparedStatement.executeQuery()) {
 				if (resultSet.next()) {
+					
 					LocalDate dateOfBirth = LocalDate.ofEpochDay(resultSet.getDate(1).getTime() / 86_400_000);
 					LocalDate now = LocalDate.now();
 					int age = (int) ChronoUnit.YEARS.between(dateOfBirth, now);
