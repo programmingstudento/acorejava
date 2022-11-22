@@ -13,6 +13,10 @@ import java.util.stream.Collectors;
 
 public class PropertyFileKeys {
 	public static void main(String[] args) {
+		var one = new TreeSet<String>();
+		one.add("banana");
+		one.add("apple");
+		System.out.println(one);
 		String pathOne = "D:\\Prop1.properties", pathTwo = "D:\\Prop2.properties";
 		var keyOne = getPropertyKey(pathOne);
 		var keyTwo = getPropertyKey(pathTwo);
